@@ -1,0 +1,70 @@
+@import './index.sass'
+
+.container
+    display: flex
+    flex-direction: column
+    align-items: center
+    background-color: #313131
+    max-height: 100vh
+    height: 100vh
+
+.title
+    font-family: SfDistantGalaxy, sans-serif
+    color: #ffe81f
+    font-size: 5em
+    margin: 5px
+
+.searchBar
+    width: 40%
+    height: 40px
+    border-radius: 1px
+    outline: none
+    border-radius: 0px
+    text-align: center
+    font-size: 1em
+    margin: 10px
+    padding: 0
+    --rmsc-main: #ffe81f !important
+    --rmsc-radius: 1px !important
+
+.list
+    height: 80%
+    overflow: auto
+    width: 50%
+    display: flex
+    flex-direction: column
+    align-items: center
+
+.loader
+    padding-top: 50px
+
+.elementsLoader
+    height: 10%
+    width: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    
+
+
+::-webkit-scrollbar
+    background-color: #928400
+    border-radius: 16px
+    width: 8px
+        
+        
+
+::-webkit-scrollbar-thumb
+    background: #ffe81f
+    border-radius: 16px
+        
+@media (max-width: 768px)
+    .title
+        font-size: 2em
+    
+    .searchBar
+        width: 90%
+
+    .list
+        width: 90%
+        height: 90%
