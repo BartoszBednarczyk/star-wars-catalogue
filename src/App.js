@@ -33,7 +33,7 @@ function App() {
     console.log("test")
       setNext("")
       fetch(nextt).then(res => res.json()).then(res => {
-        setNext(res.next.replace('http', 'https'))
+        res.next != null ? setNext(res.next.replace('http', 'https')) : setNext(res.next)
         res.results.map(result => {filterPeople(result) && setData(current => [...current, result])})
     })
   }
@@ -49,7 +49,7 @@ function App() {
 
   const fetchDefault = () => {
     fetch('https://swapi.dev/api/people/').then(res => res.json()).then(res => {
-      setNext(res.next.replace('http', 'https'))
+      res.next != null ? setNext(res.next.replace('http', 'https')) : setNext(res.next)
       res.results.map(result => {filterPeople(result) && setData(current => [...current, result])})
   })
   }
