@@ -7,7 +7,7 @@ import MultiSelect from "react-multi-select-component";
 import { v4 as uuidv4 } from 'uuid'
 function App() {
   const [data, setData] = useState([])
-  const [nextt, setNext] = useState("https://swapi.dev/api/people/")
+  const [nextURL, setNextURL] = useState("https://swapi.dev/api/people/")
   const [searchValue, setSearchBar] = useState("")
 
   const movies = [
@@ -30,24 +30,24 @@ function App() {
   }
 
   const fetchPeople = () => {
-      setNext("")
-      fetch(nextt).then(res => res.json()).then(res => {
-        res.next != null ? setNext(res.next.replace('http', 'https')) : setNext(res.next)
+      setNextURL("")
+      fetch(nextURL).then(res => res.json()).then(res => {
+        res.next != null ? setNextURL(res.next.replace('http', 'https')) : setNextURL(res.next)
         res.results.map(result => {filterPeople(result) && setData(current => [...current, result])})
     })
   }
 
   const findPeople = (search) => {
-    setNext("")
+    setNextURL("")
     fetch(`https://swapi.dev/api/people/?search=${search}`).then(res => res.json()).then(res => {
-      res.next != null ? setNext(res.next.replace('http', 'https')) : setNext(res.next)
+      res.next != null ? setNextURL(res.next.replace('http', 'https')) : setNextURL(res.next)
       res.results.map(result => {filterPeople(result) && setData(current => [...current, result])})
     })
   }
 
   const fetchDefault = () => {
     fetch('https://swapi.dev/api/people/').then(res => res.json()).then(res => {
-      res.next != null ? setNext(res.next.replace('http', 'https')) : setNext(res.next)
+      res.next != null ? setNextURL(res.next.replace('http', 'https')) : setNextURL(res.next)
       res.results.map(result => {filterPeople(result) && setData(current => [...current, result])})
   })
   }
@@ -56,7 +56,7 @@ function App() {
   useEffect(() => {
     setData([])
     if(searchValue === ""){
-      setNext('https://swapi.dev/api/people/')
+      setNextURL('https://swapi.dev/api/people/')
       fetchDefault()
       
     } else {
@@ -89,7 +89,7 @@ function App() {
       
       </div>
       <div className={styles.elementsLoader}>
-      { nextt && <InfiniteScroll 
+      { nextURL && <InfiniteScroll 
         dataLength={data.length}
         next={fetchPeople}
         hasMore={true}
