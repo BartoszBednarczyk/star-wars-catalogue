@@ -42,7 +42,7 @@ function App() {
     setNext("")
     console.log("test")
     fetch(`https://swapi.dev/api/people/?search=${search}`).then(res => res.json()).then(res => {
-      setNext(res.next.replace('http', 'https'))
+      res.next != null ? setNext(res.next.replace('http', 'https')) : setNext(res.next)
       res.results.map(result => {filterPeople(result) && setData(current => [...current, result])})
     })
   }
