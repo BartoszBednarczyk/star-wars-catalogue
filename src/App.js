@@ -33,7 +33,7 @@ function App() {
     console.log("test")
       setNext("")
       fetch(nextt).then(res => res.json()).then(res => {
-        setNext(res.next)
+        setNext(res.next.replace('http', 'https'))
         res.results.map(result => {filterPeople(result) && setData(current => [...current, result])})
     })
   }
@@ -42,14 +42,14 @@ function App() {
     setNext("")
     console.log("test")
     fetch(`https://swapi.dev/api/people/?search=${search}`).then(res => res.json()).then(res => {
-      setNext(res.next)
+      setNext(res.next.replace('http', 'https'))
       res.results.map(result => {filterPeople(result) && setData(current => [...current, result])})
     })
   }
 
   const fetchDefault = () => {
     fetch('https://swapi.dev/api/people/').then(res => res.json()).then(res => {
-      setNext(res.next)
+      setNext(res.next.replace('http', 'https'))
       res.results.map(result => {filterPeople(result) && setData(current => [...current, result])})
   })
   }

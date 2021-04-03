@@ -9,8 +9,8 @@ const CharacterModal = ({character}) => {
     
 
     useEffect(() => {
-        fetch(character.homeworld).then(res => res.json()).then(res => setHomeWorld(res.name))
-        character.films.map(movie => fetch(movie).then(res => res.json()).then(res => setMovies(current => [...current, res.title])))
+        fetch(character.homeworld.replace('http', 'https')).then(res => res.json()).then(res => setHomeWorld(res.name))
+        character.films.map(movie => fetch(movie.replace('http', 'https')).then(res => res.json()).then(res => setMovies(current => [...current, res.title])))
     }, [])
 
     return (
