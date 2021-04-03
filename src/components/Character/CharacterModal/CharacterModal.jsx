@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './CharacterModal.module.sass'
 import Loader from "react-loader-spinner"
 
-const CharacterModal = ({character}) => {
+const CharacterModal = ({character, isModalOpen, closeModal}) => {
     const [homeWorld, setHomeWorld] = useState(<Loader  type="TailSpin" color="#ffe81f" height={20} width={20} />)
     const [movies, setMovies] = useState([])
 
@@ -16,40 +16,41 @@ const CharacterModal = ({character}) => {
     return (
         <div className={styles.container}>
             <div className={styles.innerContainer} onClick={(e) => e.stopPropagation()}>
+                <button onClick={() => closeModal(!isModalOpen)} className={styles.closeButton}>X</button>
                 <h2>{character.name}</h2>
                 <hr className={styles.separator} />
 
-                {character.height != "unknown" && <div className={styles.card}>
+                {character.height !== "unknown" && <div className={styles.card}>
                     <h3>{character.height}</h3>
                     <p>Height</p>
                 </div>}
 
-                {character.mass != "unknown" && <div className={styles.card}>
+                {character.mass !== "unknown" && <div className={styles.card}>
                     <h3>{character.mass}</h3>
                     <p>Weight</p>
                 </div>}
 
-                {character.hair_color != "unknown" && <div className={styles.card}>
+                {character.hair_color !== "unknown" && <div className={styles.card}>
                     <h3>{character.hair_color}</h3>
                     <p>Hair color</p>
                 </div>}
 
-                {character.skin_color != "unknown" && <div className={styles.card}>
+                {character.skin_color !== "unknown" && <div className={styles.card}>
                     <h3>{character.skin_color}</h3>
                     <p>Skin color</p>
                 </div>}
 
-                {character.eye_color != "unknown" && <div className={styles.card}>
+                {character.eye_color !== "unknown" && <div className={styles.card}>
                     <h3>{character.eye_color}</h3>
                     <p>Eye color</p>
                 </div>}
 
-                {character.birth_year != "unknown" && <div className={styles.card}>
+                {character.birth_year !== "unknown" && <div className={styles.card}>
                     <h3>{character.birth_year}</h3>
                     <p>Birth year</p>
                 </div>}
 
-                {character.gender != "unknown" && <div className={styles.card}>
+                {character.gender !== "unknown" && <div className={styles.card}>
                     <h3>{character.gender}</h3>
                     <p>Gender</p>
                 </div>}
